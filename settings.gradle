@@ -1,0 +1,5 @@
+rootProject.name='yqq_project'
+include ':cloud_music'
+include ':lib_audio'
+include ':lib_video'
+include ':lib_commin_ui'
