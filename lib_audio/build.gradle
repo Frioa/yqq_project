@@ -9,7 +9,6 @@ def pomDescription = 'the audio library for all projects'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 19

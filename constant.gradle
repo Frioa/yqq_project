@@ -1,0 +1,21 @@
+ext {
+    android = [
+            compileSdkVersion: 28,
+            minSdkVersion    : 19,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "1.0",
+            multiDexEnabled  : true,
+    ]
+
+    depsVersion = [
+            kotlinVersion: '1.3.61',
+            appcompat    : '28.0.0',
+    ]
+
+    depsLibs = [
+            kotlin   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${depsVersion.kotlinVersion}",
+            appcompat: "com.android.support:appcompat-v7:${depsVersion.appcompat}"
+    ]
+
+}
