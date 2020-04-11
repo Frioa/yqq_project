@@ -34,4 +34,5 @@ dependencies {
     compileOnly this.rootProject.depsLibs.kotlin
     compileOnly this.rootProject.depsLibs.appcompat
     api this.rootProject.depsLibs.okhttp
+    api this.rootProject.depsLibs.gson
 }

@@ -110,7 +110,7 @@ class CommonRequest {
                             "Content-Disposition",
                             "form-data; name=\"$key\""
                         ),
-                        RequestBody.create(FILE_TYPE, value as File)
+                        RequestBody.create(FILE_TYPE, value)
                     )
                 } else if (value is String) {
                     requestBody.addPart(
