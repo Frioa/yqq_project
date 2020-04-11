@@ -1,12 +1,15 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion this.rootProject.android.compileSdkVersion
 
+    dexOptions {
+        jumboMode = true // 忽略方法数限制的检查
+    }
+
     defaultConfig {
-        applicationId "com.yqq.voice"
         minSdkVersion this.rootProject.android.minSdkVersion
         targetSdkVersion this.rootProject.android.targetSdkVersion
         versionCode this.rootProject.android.versionCode
@@ -27,11 +30,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation this.rootProject.depsLibs.kotlin
-    implementation this.rootProject.depsLibs.appcompat
-    implementation project(path: ':lib_commin_ui')
-    implementation project(path: ':lib_video')
-    implementation project(path: ':lib_audio')
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation project(path: ':lib_network')
+    // 只在编译时有效，不会参与打包
+    compileOnly this.rootProject.depsLibs.kotlin
+    compileOnly this.rootProject.depsLibs.appcompat
+    api this.rootProject.depsLibs.okhttp
 }

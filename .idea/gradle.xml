@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/cloud_music" />
             <option value="$PROJECT_DIR$/lib_audio" />
             <option value="$PROJECT_DIR$/lib_commin_ui" />
+            <option value="$PROJECT_DIR$/lib_network" />
             <option value="$PROJECT_DIR$/lib_video" />
           </set>
         </option>

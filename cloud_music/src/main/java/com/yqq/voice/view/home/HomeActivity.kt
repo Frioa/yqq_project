@@ -5,7 +5,6 @@ import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.FragmentActivity
 import com.yqq.lib_commin_ui.ScaleTransitionPagerTitleView
 import com.yqq.lib_commin_ui.base.BaseActivity
 import com.yqq.voice.R
@@ -25,7 +24,6 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
         initView()
     }
 
