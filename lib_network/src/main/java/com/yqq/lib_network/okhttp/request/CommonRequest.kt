@@ -1,8 +1,8 @@
 package com.yqq.lib_network.okhttp.request
 
-import okhttp3.FormBody
-import okhttp3.Headers
-import okhttp3.Request
+import okhttp3.*
+import java.io.File
+
 
 /**
  * 对外提供 get/post 文件上传请求
@@ -90,5 +90,39 @@ class CommonRequest {
                 .headers(mHeaderBuild.build())
                 .build()
         }
+    }
+
+    /**
+     * 文件上传请求
+     *
+     * @return
+     */
+    private val FILE_TYPE: MediaType = MediaType.parse("application/octet-stream")
+
+    fun createMultiPostRequest(url: String?, params: RequestParams?): Request? {
+        val requestBody = MultipartBody.Builder()
+        requestBody.setType(MultipartBody.FORM) // 指定表单提交
+        if (params != null) {
+            for ((key, value) in params.fileParams) {
+                if (value is File) {
+                    requestBody.addPart(
+                        Headers.of(
+                            "Content-Disposition",
+                            "form-data; name=\"$key\""
+                        ),
+                        RequestBody.create(FILE_TYPE, value as File)
+                    )
+                } else if (value is String) {
+                    requestBody.addPart(
+                        Headers.of(
+                            "Content-Disposition",
+                            "form-data; name=\"$key\""
+                        ),
+                        RequestBody.create(null, value)
+                    )
+                }
+            }
+        }
+        return Request.Builder().url(url).post(requestBody.build()).build()
     }
 }
