@@ -7,13 +7,12 @@ android {
 
     defaultConfig {
         minSdkVersion this.rootProject.android.minSdkVersion
-        targetSdkVersion this.rootProject.android.minSdkVersion
+        targetSdkVersion this.rootProject.android.targetSdkVersion
         versionCode this.rootProject.android.versionCode
         versionName  this.rootProject.android.versionName
         multiDexEnabled this.rootProject.android.multiDexEnabled
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        testInstrumentationRunner this.rootProject.android.testInstrumentationRunner
     }
 
     buildTypes {

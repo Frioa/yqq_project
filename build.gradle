@@ -9,7 +9,8 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
-        maven {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+/*        maven {
             url 'http://127.0.0.1:8081/repository/imooc_releases/'
             credentials {
                 username 'amdin'
@@ -22,6 +23,10 @@ buildscript {
                 username 'amdin'
                 password 'admin123'
             }
+        }*/
+
+        maven {
+            url "https://jitpack.io"
         }
     }
     dependencies {
@@ -39,7 +44,8 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
-        maven {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+/*        maven {
             url 'http://127.0.0.1:8081/repository/imooc_releases/'
             credentials {
                 username 'amdin'
@@ -52,6 +58,9 @@ allprojects {
                 username 'amdin'
                 password 'admin123'
             }
+        }*/
+        maven {
+            url "https://jitpack.io"
         }
     }
 }
