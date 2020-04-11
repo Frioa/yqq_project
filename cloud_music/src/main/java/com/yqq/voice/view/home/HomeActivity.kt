@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import com.yqq.lib_commin_ui.ScaleTransitionPagerTitleView
+import com.yqq.lib_commin_ui.base.BaseActivity
 import com.yqq.voice.R
 import com.yqq.voice.model.CHANNEL
 import com.yqq.voice.view.home.adpater.HomePagerAdapter
@@ -17,7 +18,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNav
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
 
-class HomeActivity : FragmentActivity() {
+class HomeActivity : BaseActivity() {
 
     private lateinit var homePagerAdapter: HomePagerAdapter
 
