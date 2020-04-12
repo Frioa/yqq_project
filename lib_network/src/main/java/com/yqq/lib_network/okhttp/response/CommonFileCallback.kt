@@ -7,7 +7,6 @@ import com.yqq.lib_network.exception.OkHttpException
 import com.yqq.lib_network.okhttp.listener.DisposeDataHandle
 import com.yqq.lib_network.okhttp.listener.DisposeDownloadListener
 import okhttp3.Call
-import okhttp3.Callback
 import okhttp3.Response
 import java.io.File
 import java.io.FileOutputStream
@@ -17,23 +16,18 @@ import java.io.InputStream
 /**
  * @文件描述：专门处理文件下载回调
  */
-class CommonFileCallback(handle: DisposeDataHandle) : Callback {
+class CommonFileCallback(handle: DisposeDataHandle) : BaseCallback(handle) {
     /**
      * the java layer exception, do not same to the logic error
      */
-    protected val NETWORK_ERROR = -1 // the network relative error
-    protected val IO_ERROR = -2 // the JSON relative error
-    protected val EMPTY_MSG = ""
-    private val mDeliveryHandler: Handler
-    private val mListener: DisposeDownloadListener = handle.mListener as DisposeDownloadListener
     private val mFilePath: String = handle.mSource
     private var mProgress = 0
-    override fun onFailure(
-        call: Call,
-        ioexception: IOException
-    ) {
-        mDeliveryHandler.post { mListener.onFailure(OkHttpException(NETWORK_ERROR, ioexception)) }
+
+    override fun onFailure(call: Call, e: IOException) {
+        super.onFailure(call, e)
+        mDeliveryHandler.post { mListener.onFailure(OkHttpException(NETWORK_ERROR, e)) }
     }
+
 
     @Throws(IOException::class)
     override fun onResponse(call: Call, response: Response) {
@@ -124,7 +118,7 @@ class CommonFileCallback(handle: DisposeDataHandle) : Callback {
         mDeliveryHandler = object : Handler(Looper.getMainLooper()) {
             override fun handleMessage(msg: Message) {
                 when (msg.what) {
-                    PROGRESS_MESSAGE -> mListener.onProgress(msg.obj as Int)
+                    PROGRESS_MESSAGE -> (mListener as DisposeDownloadListener).onProgress(msg.obj as Int)
                 }
             }
         }
