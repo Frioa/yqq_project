@@ -10,7 +10,6 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.BitmapImageViewTarget
@@ -81,7 +80,7 @@ class ImageLoaderManager private constructor() {
     private fun displayImageForTarget(
         context: Context, target: mTarget<Bitmap>, url: String,
         requestListener: CustomRequestListener<Bitmap>?
-    ) {
+    ) =
         Glide.with(context)
             .asBitmap()
             .load(url)
@@ -90,7 +89,7 @@ class ImageLoaderManager private constructor() {
             .fitCenter()
             .listener(requestListener)
             .into(target)
-    }
+
 
     /*
      * 初始化Notification Target
