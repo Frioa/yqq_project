@@ -1,11 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'maven'
-
-def pomName = this.getName()
-def pomVersion = '1.0.0-SNAPSHOT'
-def pomDescription = 'the audio library for all projects'
 
 android {
     compileSdkVersion this.rootProject.android.compileSdkVersion
@@ -33,23 +28,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly this.rootProject.depsLibs.kotlin
     compileOnly this.rootProject.depsLibs.appcompat
-}
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: NEXUS_PEPOSITORY_URL) {
-                authentication(userName:NEXUS_USERNAME,
-                        password:NEXUS_PASSWORD)
-            }
-            pom.project {
-                name pomName
-                version pomVersion
-                description pomDescription
-                artifactId pomVersion
-                groupId POM_GROUPID
-                packaging POM_PACKAGING
-            }
-        }
-    }
+    // Glide
+    implementation this.rootProject.depsLibs.glide
+    annotationProcessor this.rootProject.depsLibs.glidecompiler
+    // rxjava
+    compileOnly this.rootProject.depsLibs.rxjava
+    compileOnly this.rootProject.depsLibs.rxandroid
 }
