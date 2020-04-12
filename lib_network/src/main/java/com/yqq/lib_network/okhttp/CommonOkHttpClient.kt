@@ -8,37 +8,41 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.util.concurrent.TimeUnit
 
-private class CommonOkHttpClient {
-    companion object {
-        private const val TIME_OUT = 30L
+object CommonOkHttpClient {
 
-        private val okHttpClient =
-            OkHttpClient.Builder().hostnameVerifier { hostname, session ->
-                // 默认信任域名
-                true
-            }.addInterceptor { chain ->
-                val request =
-                    chain.request().newBuilder().addHeader("User-Agent", "Imooc-Mobile").build()
-                chain.proceed(request)
-            }.connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
-                .writeTimeout(TIME_OUT, TimeUnit.SECONDS).followSslRedirects(true).build()
+    private const val TIME_OUT = 30L
 
-        fun get(request: Request, handler: DisposeDataHandle): Call {
-            val call = okHttpClient.newCall(request)
-            call.enqueue(CommonJsonCallback(handler))
-            return call
-        }
+    private val okHttpClient =
+        OkHttpClient.Builder().hostnameVerifier { hostname, session ->
+            // 默认信任域名
+            true
+        }.addInterceptor { chain ->
+            val request =
+                chain.request().newBuilder().addHeader("User-Agent", "Imooc-Mobile").build()
+            chain.proceed(request)
+        }.connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
+            .writeTimeout(TIME_OUT, TimeUnit.SECONDS).followSslRedirects(true).build()
 
-        fun post(request: Request, handler: DisposeDataHandle): Call {
-            val call = okHttpClient.newCall(request)
-            call.enqueue(CommonJsonCallback(handler))
-            return call
-        }
-
-        fun downloadFile(request: Request, handler: DisposeDataHandle): Call {
-            val call = okHttpClient.newCall(request)
-            call.enqueue(CommonFileCallback(handler))
-            return call
-        }
+    @JvmStatic
+    fun get(request: Request, handler: DisposeDataHandle): Call {
+        val call = okHttpClient.newCall(request)
+        call.enqueue(CommonJsonCallback(handler))
+        return call
     }
+
+    @JvmStatic
+    fun post(request: Request, handler: DisposeDataHandle): Call {
+        val call = okHttpClient.newCall(request)
+        call.enqueue(CommonJsonCallback(handler))
+        return call
+    }
+
+    @JvmStatic
+    fun downloadFile(request: Request, handler: DisposeDataHandle): Call {
+        val call = okHttpClient.newCall(request)
+        call.enqueue(CommonFileCallback(handler))
+        return call
+    }
+
+
 }
