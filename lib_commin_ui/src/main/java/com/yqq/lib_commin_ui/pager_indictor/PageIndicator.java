@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.yqq.lib_commin_ui;
+package com.yqq.lib_commin_ui.pager_indictor;
 
 import androidx.viewpager.widget.ViewPager;
 

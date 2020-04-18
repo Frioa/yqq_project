@@ -1,3 +1,4 @@
+/*
 package com.yqq.lib_image_loader.app
 
 import android.app.Notification
@@ -19,13 +20,17 @@ import com.yqq.lib_image_loader.image.CustomRequestListener
 import com.bumptech.glide.request.target.Target as mTarget
 
 
+*/
 /**
  * 图片加载类，与外界唯一通信类，支持为各种 view ，notification， appwidget， viewgroup加载图片
- */
+ *//*
+
 class ImageLoaderManager private constructor() {
-    /**
+    */
+/**
      * 为 ImageView 加载图片
-     */
+     *//*
+
     fun displayImageForView(imageView: ImageView, url: String) =
         Glide.with(imageView.context)
             .asBitmap()
@@ -34,9 +39,11 @@ class ImageLoaderManager private constructor() {
             .transition(withCrossFade())
             .into(imageView)
 
-    /**
+    */
+/**
      * 为 ImageView 加载圆形图片
-     */
+     *//*
+
     fun displayImageForCircle(imageView: ImageView, url: String) =
         Glide.with(imageView.context)
             .asBitmap()
@@ -53,9 +60,11 @@ class ImageLoaderManager private constructor() {
             })
 
 
-    /**
+    */
+/**
      * 为notification加载图
-     */
+     *//*
+
     fun displayImageForNotification(
         context: Context, rv: RemoteViews, id: Int,
         notification: Notification, notificationId: Int, url: String
@@ -67,16 +76,20 @@ class ImageLoaderManager private constructor() {
         )
     }
 
-    /**
+    */
+/**
      * 为非view加载图片
-     */
+     *//*
+
     private fun displayImageForTarget(context: Context, target: mTarget<Bitmap>, url: String) =
         displayImageForTarget(context, target, url, null)
 
 
-    /**
+    */
+/**
      * 为非view加载图片
-     */
+     *//*
+
     private fun displayImageForTarget(
         context: Context, target: mTarget<Bitmap>, url: String,
         requestListener: CustomRequestListener<Bitmap>?
@@ -91,9 +104,11 @@ class ImageLoaderManager private constructor() {
             .into(target)
 
 
-    /*
+    */
+/*
      * 初始化Notification Target
-     */
+     *//*
+
     private fun initNotificationTarget(
         context: Context, id: Int, rv: RemoteViews,
         notification: Notification, NOTIFICATION_ID: Int
@@ -112,10 +127,11 @@ class ImageLoaderManager private constructor() {
     }
 
     companion object {
-        val instance = SingletonHolder.holder
+        val instance: ImageLoaderManager
+            get() = SingletonHolder.holder
     }
 
     private object SingletonHolder {
         val holder: ImageLoaderManager = ImageLoaderManager()
     }
-}
+}*/

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqq.lib_commin_ui;
+package com.yqq.lib_commin_ui.pager_indictor;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -34,6 +34,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+
+
+import com.yqq.lib_commin_ui.R;
 
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.widget.LinearLayout.HORIZONTAL;

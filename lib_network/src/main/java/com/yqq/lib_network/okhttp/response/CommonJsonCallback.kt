@@ -2,6 +2,7 @@ package com.yqq.lib_network.okhttp.response
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.google.gson.Gson
 import com.yqq.lib_network.exception.OkHttpException
 import com.yqq.lib_network.okhttp.listener.DisposeDataHandle
@@ -44,6 +45,7 @@ class CommonJsonCallback(handle: DisposeDataHandle): BaseCallback(handle) {
             /**
              * 协议确定后看这里如何修改
              */
+            Log.d("CommonJsonCallback", "response = $responseObj")
             val result = JSONObject(responseObj.toString())
             if (mClass == null) {
                 mListener.onSuccess(result)

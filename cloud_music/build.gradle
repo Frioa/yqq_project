@@ -32,10 +32,10 @@ dependencies {
     implementation this.rootProject.depsLibs.rxjava
     implementation this.rootProject.depsLibs.rxandroid
 
+    implementation this.rootProject.depsLibs.eventbus
     implementation project(path: ':lib_commin_ui')
     implementation project(path: ':lib_video')
     implementation project(path: ':lib_audio')
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation project(path: ':lib_network')
     implementation project(path: ':ib_image_loader')
 }

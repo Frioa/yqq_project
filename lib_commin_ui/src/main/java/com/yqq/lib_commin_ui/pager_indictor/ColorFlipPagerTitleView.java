@@ -1,4 +1,4 @@
-package com.yqq.lib_commin_ui;
+package com.yqq.lib_commin_ui.pager_indictor;
 
 import android.content.Context;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;

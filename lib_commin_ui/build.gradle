@@ -32,5 +32,6 @@ dependencies {
     //可以用arouter去掉此依赖
 //    compileOnly project(':lib_image_loader')
     api 'com.github.hackware1993:MagicIndicator:1.5.0'
+    compileOnly project(path: ':ib_image_loader')
 
 }

@@ -14,8 +14,8 @@ import com.yqq.voice.model.user.User;
 public class RequestCenter {
 
     static class HttpConstants {
-        private static final String ROOT_URL = "http://imooc.com/api";
-        //private static final String ROOT_URL = "http://39.97.122.129";
+        // private static final String ROOT_URL = "http://imooc.com/api";
+        private static final String ROOT_URL = "http://39.97.122.129";
 
         /**
          * 首页请求接口
@@ -50,7 +50,6 @@ public class RequestCenter {
      * 用户登陆请求
      */
     public static void login(DisposeDataListener listener) {
-
         RequestParams params = new RequestParams();
         params.put("mb", "18734924592");
         params.put("pwd", "999999q");
