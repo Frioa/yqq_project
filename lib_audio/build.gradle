@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
+apply plugin: 'org.greenrobot.greendao'
 
 def pomName = this.getName()
 def pomVersion = '1.0.0-SNAPSHOT'
@@ -33,6 +34,24 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly this.rootProject.depsLibs.kotlin
     compileOnly this.rootProject.depsLibs.appcompat
+    compileOnly this.rootProject.depsLibs.design
+    compileOnly this.rootProject.depsLibs.recyclerview
+
+    compileOnly this.rootProject.depsLibs.greendao
+    compileOnly this.rootProject.depsLibs.eventbus
+    compileOnly this.rootProject.depsLibs.rxjava
+
+    compileOnly project(':lib_image_loader')
+    compileOnly project(':lib_commin_ui')
+//    compileOnly project(':lib_share')
+
+
+
+}
+
+greendao {
+    schemaVersion 1 // 数据库版本号
+    daoPackage 'com.yqq.lib_audio.mediaplayer.db'  // dao, master 类所在的包
 }
 
 uploadArchives {

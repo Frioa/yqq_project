@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import com.yqq.lib_commin_ui.base.BaseActivity
@@ -17,7 +16,6 @@ import com.yqq.voice.view.home.adpater.HomePagerAdapter
 import com.yqq.voice.view.login.LoginActivity
 import com.yqq.voice.view.login.manager.UserManager
 import kotlinx.android.synthetic.main.activity_home.*
-import net.lucode.hackware.magicindicator.MagicIndicator
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
@@ -71,7 +69,7 @@ class HomeActivity : BaseActivity() {
                 return simplePagerTitleView
             }
 
-            override fun getCount(): Int = if(CHANNELS == null)  0 else CHANNELS.size
+            override fun getCount(): Int = CHANNELS?.size ?: 0
 
             override fun getIndicator(context: Context?): IPagerIndicator? {
                 return null
