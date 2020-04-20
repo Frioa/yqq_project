@@ -1,5 +1,7 @@
 package com.yqq.lib_audio.core
 
+import com.yqq.lib_audio.db.GreenDaoHelper
+import com.yqq.lib_audio.event.AudioFavouriteEvent
 import com.yqq.lib_audio.exception.AudioQueueEmptyException
 import com.yqq.lib_audio.model.AudioBean
 import org.greenrobot.eventbus.EventBus
@@ -23,13 +25,16 @@ class AudioController private constructor() {
     private var mQueueIndex: Int = 0
     private val mAudioPlayer: AudioPlayer = AudioPlayer()
 
+    fun setQueue(list: ArrayList<AudioBean>) = setQueue(list, 0)
+
     fun setQueue(list: ArrayList<AudioBean>, index: Int) {
         mQueue.addAll(list)
         mQueueIndex = index
     }
 
+    fun addAudio(bean: AudioBean) = addAudio(0, bean)
     // 添加单一歌曲
-    fun addAudio(index: Int = 0, bean: AudioBean) {
+    fun addAudio(index: Int, bean: AudioBean) {
         if (mQueue.isEmpty()) throw AudioQueueEmptyException("当前播放队列为空，请先设置播放队列")
         val query = queryAudio(bean)
         if (query <= -1) {
@@ -94,10 +99,22 @@ class AudioController private constructor() {
 
     fun isPauseState() = CustomMediaPlayer.Status.STARTED == getStatus()
 
+    fun changeFavourite() {
+        if (GreenDaoHelper.selectFavourite(getNowPlaying()) != null) {
+            // 取消收藏
+            GreenDaoHelper.removeFavourite(getNowPlaying())
+            EventBus.getDefault().post(AudioFavouriteEvent(false))
+        } else {
+            GreenDaoHelper.addFavourite(getNowPlaying())
+            EventBus.getDefault().post(AudioFavouriteEvent(true))
+
+        }
+    }
+
     private fun getStatus() = mAudioPlayer.getStatus()
 
 
-    private fun getNowPlaying(): AudioBean {
+    fun getNowPlaying(): AudioBean {
         return getPlaying()
     }
 
@@ -139,8 +156,12 @@ class AudioController private constructor() {
     }
 
     companion object {
-        val instance: AudioController
-            get() = SingletonHolder.holder
+        @JvmStatic
+         var instance = SingletonHolder.holder
+
+        @JvmStatic
+        fun instance() = instance
+
     }
 
     private object SingletonHolder {

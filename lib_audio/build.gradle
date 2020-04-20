@@ -37,9 +37,9 @@ dependencies {
     compileOnly this.rootProject.depsLibs.design
     compileOnly this.rootProject.depsLibs.recyclerview
 
-    compileOnly this.rootProject.depsLibs.greendao
     compileOnly this.rootProject.depsLibs.eventbus
     compileOnly this.rootProject.depsLibs.rxjava
+    api this.rootProject.depsLibs.greendao
 
     compileOnly project(':lib_image_loader')
     compileOnly project(':lib_commin_ui')

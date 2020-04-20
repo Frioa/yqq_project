@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:background="@color/color_white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
 
-<!--    存放内容区-->
+    <!--    存放内容区-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:id="@+id/title_layout"
             android:layout_width="match_parent"
@@ -46,20 +47,22 @@
 
         </RelativeLayout>
 
-  <!--      <com.imooc.lib_audio.mediaplayer.view.BottomMusicView
+        <com.yqq.lib_audio.view.BottomMusicView
             android:id="@+id/bottom_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />-->
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/title_layout" />
+            android:layout_below="@id/title_layout"
+            android:layout_above="@id/bottom_view"
+           />
     </RelativeLayout>
 
-<!--    存放侧滑菜单-->
+    <!--    存放侧滑菜单-->
     <RelativeLayout
         android:id="@+id/left_drawer_layout"
         android:layout_width="match_parent"

@@ -45,7 +45,7 @@ class AudioPlayer() : MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingU
     private fun init() {
         mMediaPlayer = CustomMediaPlayer()
         mMediaPlayer!!.let {
-            it.setWakeMode(null, PowerManager.PARTIAL_WAKE_LOCK)
+            it.setWakeMode(AudioHelper.getContext(), PowerManager.PARTIAL_WAKE_LOCK)
             it.setAudioStreamType(AudioManager.STREAM_MUSIC)
             it.setOnCompletionListener(this)
             it.setOnBufferingUpdateListener(this)
@@ -55,11 +55,11 @@ class AudioPlayer() : MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingU
 
         // 初始化 mWifiLock
         mWifiLock =
-            (AudioHelper.getmContext().applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager).createWifiLock(
+            (AudioHelper.getContext().applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager).createWifiLock(
                 WifiManager.WIFI_MODE_FULL,
                 TAG
             )
-        mAudioFocusManager = AudioFocusManager(AudioHelper.getmContext(), this)
+        mAudioFocusManager = AudioFocusManager(AudioHelper.getContext(), this)
     }
 
     /**
@@ -84,7 +84,7 @@ class AudioPlayer() : MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingU
     private fun start() {
         if (!mAudioFocusManager!!.requestAudioFocus()) {
             Log.e(TAG, "获取音频焦点失败")
-            Toast.makeText(AudioHelper.getmContext(), "获取音频焦点失败", Toast.LENGTH_LONG).show()
+            Toast.makeText(AudioHelper.getContext(), "获取音频焦点失败", Toast.LENGTH_LONG).show()
         }
         mMediaPlayer!!.start()
         mWifiLock!!.acquire()
