@@ -84,9 +84,8 @@ public class BottomMusicView extends RelativeLayout {
     mPlayView.setOnClickListener(new OnClickListener() {
       @Override public void onClick(View v) {
         //处理播放暂停事件
-//        AudioController.instance().playOrPause();
-        Log.d(TAG, "点击播放按钮");
-        AudioController.instance().play();
+        AudioController.instance().playOrPause();
+//        AudioController.instance().play();
       }
     });
     mRightView = rootView.findViewById(R.id.show_list_view);

@@ -97,7 +97,7 @@ class AudioController private constructor() {
 
     fun isStartState() = CustomMediaPlayer.Status.STARTED == getStatus()
 
-    fun isPauseState() = CustomMediaPlayer.Status.STARTED == getStatus()
+    fun isPauseState() = CustomMediaPlayer.Status.PAUSED == getStatus()
 
     fun changeFavourite() {
         if (GreenDaoHelper.selectFavourite(getNowPlaying()) != null) {
@@ -136,7 +136,7 @@ class AudioController private constructor() {
     private fun getPreviousPlaying(): AudioBean {
         when (mPlayMode) {
             PlayMode.LOOP -> {
-                mQueueIndex = (mQueueIndex - 1) % mQueue.size
+                mQueueIndex = (mQueueIndex - 1 + mQueue.size) % mQueue.size
             }
             PlayMode.RANDOM -> {
                 mQueueIndex = Random().nextInt(mQueue.size) % mQueue.size
@@ -149,7 +149,7 @@ class AudioController private constructor() {
     }
 
     private fun getPlaying(): AudioBean {
-        if (mQueue.isEmpty() && mQueueIndex >= 0) {
+        if (mQueue.isEmpty() && mQueueIndex < 0) {
             throw AudioQueueEmptyException("当前播放队列为空，请先设置播放队列")
         }
         return mQueue[mQueueIndex]
