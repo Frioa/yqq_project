@@ -31,11 +31,13 @@ dependencies {
     implementation this.rootProject.depsLibs.appcompat
     implementation this.rootProject.depsLibs.rxjava
     implementation this.rootProject.depsLibs.rxandroid
-
     implementation this.rootProject.depsLibs.eventbus
+
     implementation project(path: ':lib_commin_ui')
     implementation project(path: ':lib_video')
     implementation project(path: ':lib_audio')
     implementation project(path: ':lib_network')
     implementation project(path: ':lib_image_loader')
+    implementation project(path: ':lib_pullalive')
+
 }

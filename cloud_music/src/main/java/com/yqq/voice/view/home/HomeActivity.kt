@@ -105,7 +105,7 @@ class HomeActivity : BaseActivity() {
                 simplePagerTitleView.textSize = 19.0f
                 simplePagerTitleView.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
                 simplePagerTitleView.normalColor = resources.getColor(R.color.color_999999)
-                simplePagerTitleView.selectedColor =  resources.getColor(R.color.color_333333)
+                simplePagerTitleView.selectedColor = resources.getColor(R.color.color_333333)
 
                 simplePagerTitleView.setOnClickListener {
                     view_pager.currentItem = index
@@ -140,6 +140,6 @@ class HomeActivity : BaseActivity() {
 
     companion object {
         // 指定首页要出现的卡片
-        val CHANNELS: Array<CHANNEL> = arrayOf(CHANNEL.MY, CHANNEL.VIDEO)
+        val CHANNELS: Array<CHANNEL> = arrayOf(CHANNEL.MY, CHANNEL.FRIEND, CHANNEL.VIDEO)
     }
 }

@@ -1,4 +1,3 @@
-/*
 package com.yqq.voice.view.home.friend;
 
 import android.content.Context;
@@ -15,42 +14,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.imooc.imooc_voice.R;
-import com.imooc.imooc_voice.api.MockData;
-import com.imooc.imooc_voice.api.RequestCenter;
-import com.imooc.imooc_voice.model.friend.BaseFriendModel;
-import com.imooc.imooc_voice.model.friend.FriendBodyValue;
-import com.imooc.imooc_voice.view.friend.adapter.FriendRecyclerAdapter;
-import com.imooc.lib_commin_ui.recyclerview.wrapper.LoadMoreWrapper;
-import com.imooc.lib_network.okhttp.listener.DisposeDataListener;
-import com.imooc.lib_network.okhttp.utils.ResponseEntityToModule;
+
+import com.yqq.lib_commin_ui.recyclerview.wrapper.LoadMoreWrapper;
+import com.yqq.lib_network.okhttp.listener.DisposeDataListener;
+import com.yqq.voice.R;
+import com.yqq.voice.api.RequestCenter;
+import com.yqq.voice.model.friend.BaseFriendModel;
+import com.yqq.voice.model.friend.FriendBodyValue;
+import com.yqq.voice.view.home.friend.adapter.FriendRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-*/
 /**
  * 首页发现fragment
- *//*
-
+ */
 public class FriendFragment extends Fragment
         implements SwipeRefreshLayout.OnRefreshListener, LoadMoreWrapper.OnLoadMoreListener {
 
     private Context mContext;
-    */
-/*
+    /*
      * UI
-     *//*
-
+     */
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private FriendRecyclerAdapter mAdapter;
     private LoadMoreWrapper mLoadMoreWrapper;
-    */
-/*
+    /*
      * data
-     *//*
-
+     */
     private BaseFriendModel mRecommandData;
     private List<FriendBodyValue> mDatas = new ArrayList<>();
 
@@ -112,8 +104,8 @@ public class FriendFragment extends Fragment
             @Override
             public void onFailure(Object reasonObj) {
                 //显示请求失败View,显示mock数据
-                onSuccess(
-                        ResponseEntityToModule.parseJsonToModule(MockData.FRIEND_DATA, BaseFriendModel.class));
+              /*  onSuccess(
+                        ResponseEntityToModule.parseJsonToModule(MockData.FRIEND_DATA, BaseFriendModel.class));*/
             }
         });
     }
@@ -131,8 +123,8 @@ public class FriendFragment extends Fragment
             @Override
             public void onFailure(Object reasonObj) {
                 //显示请求失败View,显示mock数据
-                onSuccess(ResponseEntityToModule.parseJsonToModule(MockData.FRIEND_DATA,
-                        BaseFriendModel.class));
+            /*    onSuccess(ResponseEntityToModule.parseJsonToModule(MockData.FRIEND_DATA,
+                        BaseFriendModel.class));*/
             }
         });
     }
@@ -149,4 +141,3 @@ public class FriendFragment extends Fragment
         mRecyclerView.setAdapter(mLoadMoreWrapper);
     }
 }
-*/

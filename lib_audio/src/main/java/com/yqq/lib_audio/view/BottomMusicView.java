@@ -1,6 +1,7 @@
 package com.yqq.lib_audio.view;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -63,7 +64,7 @@ public class BottomMusicView extends RelativeLayout {
     rootView.setOnClickListener(new OnClickListener() {
       @Override public void onClick(View v) {
         //跳到音乐播放Activitity
-//        MusicPlayerActivity.start((Activity) mContext);
+        MusicPlayerActivity.start((Activity) mContext);
         Log.d("TAG", "跳到音乐播放Activitity");
 
       }

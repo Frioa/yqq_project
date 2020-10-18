@@ -1,4 +1,3 @@
-/*
 package com.yqq.lib_audio.view;
 
 import android.animation.Animator;
@@ -21,34 +20,30 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.imooc.lib_audio.R;
-import com.imooc.lib_audio.mediaplayer.core.AudioController;
-import com.imooc.lib_audio.mediaplayer.core.CustomMediaPlayer;
-import com.imooc.lib_audio.mediaplayer.db.GreenDaoHelper;
-import com.imooc.lib_audio.mediaplayer.events.AudioFavouriteEvent;
-import com.imooc.lib_audio.mediaplayer.events.AudioLoadEvent;
-import com.imooc.lib_audio.mediaplayer.events.AudioPauseEvent;
-import com.imooc.lib_audio.mediaplayer.events.AudioPlayModeEvent;
-import com.imooc.lib_audio.mediaplayer.events.AudioProgressEvent;
-import com.imooc.lib_audio.mediaplayer.events.AudioStartEvent;
-import com.imooc.lib_audio.mediaplayer.model.AudioBean;
-import com.imooc.lib_audio.mediaplayer.utils.Utils;
-import com.imooc.lib_commin_ui.base.BaseActivity;
-import com.imooc.lib_image_loader.app.ImageLoaderManager;
-import com.imooc.lib_share.share.ShareDialog;
+
+import com.yqq.lib_audio.R;
+import com.yqq.lib_audio.core.AudioController;
+import com.yqq.lib_audio.core.CustomMediaPlayer;
+import com.yqq.lib_audio.db.GreenDaoHelper;
+import com.yqq.lib_audio.event.AudioFavouriteEvent;
+import com.yqq.lib_audio.event.AudioLoadEvent;
+import com.yqq.lib_audio.event.AudioPauseEvent;
+import com.yqq.lib_audio.event.AudioPlayModeEvent;
 import com.yqq.lib_audio.event.AudioProgressEvent;
+import com.yqq.lib_audio.event.AudioStartEvent;
+import com.yqq.lib_audio.model.AudioBean;
+import com.yqq.lib_audio.utils.Utils;
+import com.yqq.lib_commin_ui.base.BaseActivity;
+import com.yqq.lib_image_loader.app.ImageLoaderManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-*/
 /**
  * 播放音乐Activity
- *//*
-
-@Route(path = "/audio/music_activity")
+ */
+//@Route(path = "/audio/music_activity")
 public class MusicPlayerActivity extends BaseActivity {
 
     private RelativeLayout mBgView;
@@ -67,11 +62,6 @@ public class MusicPlayerActivity extends BaseActivity {
     private ImageView mPreViousView;
 
     private Animator animator;
-    */
-/**
-     * data
-     *//*
-
     private AudioBean mAudioBean; //当前正在播放歌曲
     private AudioController.PlayMode mPlayMode;
 
@@ -103,7 +93,7 @@ public class MusicPlayerActivity extends BaseActivity {
 
     private void initData() {
         mAudioBean = AudioController.getInstance().getNowPlaying();
-        mPlayMode = AudioController.getInstance().getPlayMode();
+        mPlayMode = AudioController.getInstance().getMPlayMode();
     }
 
     private void initView() {
@@ -130,13 +120,13 @@ public class MusicPlayerActivity extends BaseActivity {
         findViewById(R.id.show_list_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MusicListDialog dialog = new MusicListDialog(MusicPlayerActivity.this);
-                dialog.show();
+            /*    MusicListDialog dialog = new MusicListDialog(MusicPlayerActivity.this);
+                dialog.show();*/
             }
         });
         mInfoView = findViewById(R.id.album_view);
         mInfoView.setText(mAudioBean.albumInfo);
-        mInfoView.requestFocus();
+        mInfoView.requestFocus(); // 跑马灯效果焦点获取
         mAuthorView = findViewById(R.id.author_view);
         mAuthorView.setText(mAudioBean.author);
 
@@ -200,7 +190,7 @@ public class MusicPlayerActivity extends BaseActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onAudioLoadEvent(AudioLoadEvent event) {
         //更新notifacation为load状态
-        mAudioBean = event.mAudioBean;
+        mAudioBean = event.getMAudioBean();
         ImageLoaderManager.getInstance().displayImageForViewGroup(mBgView, mAudioBean.albumPic);
         //可以与初始化时的封装一个方法
         mInfoView.setText(mAudioBean.albumInfo);
@@ -236,14 +226,14 @@ public class MusicPlayerActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onAudioProgessEvent(AudioProgressEvent event) {
-        int totalTime = event.maxLength;
-        int currentTime = event.progress;
+        int totalTime = event.getMaxLength();
+        int currentTime = event.getProgress();
         //更新时间
         mStartTimeView.setText(Utils.formatTime(currentTime));
         mTotalTimeView.setText(Utils.formatTime(totalTime));
         mProgressView.setProgress(currentTime);
         mProgressView.setMax(totalTime);
-        if (event.mStatus == CustomMediaPlayer.Status.PAUSED) {
+        if (event.getMStatus() == CustomMediaPlayer.Status.PAUSED) {
             showPauseView();
         } else {
             showPlayView();
@@ -293,20 +283,17 @@ public class MusicPlayerActivity extends BaseActivity {
         }
     }
 
-    */
-/**
+    /**
      * 分享慕课网给好友
-     *//*
-
+     */
     private void shareMusic(String url, String name) {
-        ShareDialog dialog = new ShareDialog(this, false);
+    /*    ShareDialog dialog = new ShareDialog(this, false);
         dialog.setShareType(5);
         dialog.setShareTitle(name);
         dialog.setShareTitleUrl(url);
         dialog.setShareText("慕课网");
         dialog.setShareSite("imooc");
         dialog.setShareSiteUrl("http://www.imooc.com");
-        dialog.show();
+        dialog.show();*/
     }
 }
-*/

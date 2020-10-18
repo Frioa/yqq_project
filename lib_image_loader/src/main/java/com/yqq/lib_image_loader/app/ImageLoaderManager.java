@@ -1,6 +1,7 @@
 package com.yqq.lib_image_loader.app;
 
 import android.app.Notification;
+import android.app.job.JobService;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;

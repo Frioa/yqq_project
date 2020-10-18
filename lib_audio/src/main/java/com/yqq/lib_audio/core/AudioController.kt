@@ -32,6 +32,11 @@ class AudioController private constructor() {
         mQueueIndex = index
     }
 
+    fun setPlayMode(mode: PlayMode) {
+        mPlayMode = mode
+    }
+
+
     fun addAudio(bean: AudioBean) = addAudio(0, bean)
     // 添加单一歌曲
     fun addAudio(index: Int, bean: AudioBean) {
@@ -157,7 +162,7 @@ class AudioController private constructor() {
 
     companion object {
         @JvmStatic
-         var instance = SingletonHolder.holder
+        var instance = SingletonHolder.holder
 
         @JvmStatic
         fun instance() = instance

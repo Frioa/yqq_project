@@ -7,6 +7,7 @@ class UserManager private constructor() {
     private var mUser: User? = null
 
     companion object {
+        @JvmStatic
         val instance: UserManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             UserManager()
         }

@@ -1,4 +1,3 @@
-/*
 package com.yqq.voice.view.home.friend.adapter;
 
 import android.app.Activity;
@@ -7,17 +6,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.imooc.imooc_voice.R;
-import com.imooc.imooc_voice.model.friend.FriendBodyValue;
-import com.imooc.imooc_voice.utils.UserManager;
-import com.imooc.imooc_voice.view.login.LoginActivity;
-import com.imooc.lib_audio.app.AudioHelper;
-import com.imooc.lib_commin_ui.MultiImageViewLayout;
-import com.imooc.lib_commin_ui.recyclerview.MultiItemTypeAdapter;
-import com.imooc.lib_commin_ui.recyclerview.base.ItemViewDelegate;
-import com.imooc.lib_commin_ui.recyclerview.base.ViewHolder;
-import com.imooc.lib_image_loader.app.ImageLoaderManager;
-import com.imooc.lib_video.videoplayer.core.VideoAdContext;
+
+import com.yqq.lib_audio.app.AudioHelper;
+import com.yqq.lib_commin_ui.MultiImageViewLayout;
+import com.yqq.lib_commin_ui.recyclerview.MultiItemTypeAdapter;
+import com.yqq.lib_commin_ui.recyclerview.base.ItemViewDelegate;
+import com.yqq.lib_commin_ui.recyclerview.base.ViewHolder;
+import com.yqq.lib_image_loader.app.ImageLoaderManager;
+import com.yqq.voice.R;
+import com.yqq.voice.model.friend.FriendBodyValue;
+import com.yqq.voice.view.login.LoginActivity;
+import com.yqq.voice.view.login.manager.UserManager;
 
 import java.util.List;
 
@@ -31,15 +30,14 @@ public class FriendRecyclerAdapter extends MultiItemTypeAdapter {
     public FriendRecyclerAdapter(Context context, List<FriendBodyValue> datas) {
         super(context, datas);
         mContext = context;
+        // 绑定 Delegate
         addItemViewDelegate(MUSIC_TYPE, new MusicItemDelegate());
         addItemViewDelegate(VIDEO_TYPE, new VideoItemDelegate());
     }
 
-    */
-/**
+    /**
      * 图片类型item
-     *//*
-
+     */
     private class MusicItemDelegate implements ItemViewDelegate<FriendBodyValue> {
         @Override
         public int getItemViewLayoutId() {
@@ -63,16 +61,16 @@ public class FriendRecyclerAdapter extends MultiItemTypeAdapter {
             holder.setOnClickListener(R.id.album_layout, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //调用播放器装饰类
+                    // 调用播放器装饰类
                     AudioHelper.addAudio((Activity) mContext, recommandBodyValue.audioBean);
                 }
             });
             holder.setOnClickListener(R.id.guanzhu_view, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!UserManager.getInstance().hasLogined()) {
+                    if (!UserManager.getInstance().hasLogin()) {
                         //goto login
-                        LoginActivity.start(mContext);
+//                        LoginActivity.start(mContext);
                     }
                 }
             });
@@ -87,11 +85,9 @@ public class FriendRecyclerAdapter extends MultiItemTypeAdapter {
         }
     }
 
-    */
-/**
+    /**
      * 视频类型item
-     *//*
-
+     */
     private class VideoItemDelegate implements ItemViewDelegate<FriendBodyValue> {
 
         @Override
@@ -106,7 +102,7 @@ public class FriendRecyclerAdapter extends MultiItemTypeAdapter {
 
         @Override
         public void convert(ViewHolder holder, FriendBodyValue recommandBodyValue, int position) {
-            RelativeLayout videoGroup = holder.getView(R.id.video_layout);
+     /*       RelativeLayout videoGroup = holder.getView(R.id.video_layout);
             VideoAdContext mAdsdkContext = new VideoAdContext(videoGroup, recommandBodyValue.videoUrl);
             holder.setText(R.id.fansi_view, recommandBodyValue.fans + "粉丝");
             holder.setText(R.id.name_view, recommandBodyValue.name + " 分享视频");
@@ -121,10 +117,9 @@ public class FriendRecyclerAdapter extends MultiItemTypeAdapter {
                 }
             });
             ImageView avatar = holder.getView(R.id.photo_view);
-            ImageLoaderManager.getInstance().displayImageForCircle(avatar, recommandBodyValue.avatr);
+            ImageLoaderManager.getInstance().displayImageForCircle(avatar, recommandBodyValue.avatr);*/
         }
     }
 }
 
 
-*/

@@ -6,6 +6,7 @@ import com.yqq.lib_network.okhttp.listener.DisposeDataHandle;
 import com.yqq.lib_network.okhttp.listener.DisposeDataListener;
 import com.yqq.lib_network.okhttp.request.CommonRequest;
 import com.yqq.lib_network.okhttp.request.RequestParams;
+import com.yqq.voice.model.friend.BaseFriendModel;
 import com.yqq.voice.model.user.User;
 
 /**
@@ -14,7 +15,7 @@ import com.yqq.voice.model.user.User;
 public class RequestCenter {
 
     static class HttpConstants {
-        // private static final String ROOT_URL = "http://imooc.com/api";
+         // private static final String ROOT_URL = "http://imooc.com/api";
         private static final String ROOT_URL = "http://39.97.122.129";
 
         /**
@@ -54,5 +55,12 @@ public class RequestCenter {
         params.put("mb", "18734924592");
         params.put("pwd", "999999q");
         RequestCenter.getRequest(HttpConstants.LOGIN, params, listener, User.class);
+    }
+
+    /*
+    * 朋友页面请求
+     */
+    public static void requestFriendData(DisposeDataListener listener) {
+        postRequest(HttpConstants.HOME_FRIEND, null, listener, BaseFriendModel.class);
     }
 }

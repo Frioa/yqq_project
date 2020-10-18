@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.yqq.voice.view.VideoFragment
 import com.yqq.voice.model.CHANNEL
+import com.yqq.voice.view.home.friend.FriendFragment
 //import com.yqq.voice.view.home.discory.DiscoryFragment
 //import com.yqq.voice.view.home.friend.FriendFragment
 import com.yqq.voice.view.mine.MineFragment
@@ -21,7 +22,7 @@ class HomePagerAdapter(
         when (type) {
             CHANNEL.MINE_ID -> return MineFragment.newInstance()
 //            CHANNEL.DISCORY_ID -> return DiscoryFragment.newInstance()
-//            CHANNEL.FRIEND_ID -> return FriendFragment.newInstance()
+            CHANNEL.FRIEND_ID -> return FriendFragment.newInstance()
             CHANNEL.VIDEO_ID -> return VideoFragment.newInstance()
         }
         return null

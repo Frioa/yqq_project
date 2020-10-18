@@ -96,10 +96,10 @@ public class IndictorView extends RelativeLayout implements ViewPager.OnPageChan
     @Override
     public void onPageScrollStateChanged(int state) {
         switch (state) {
-            case ViewPager.SCROLL_STATE_IDLE:
+            case ViewPager.SCROLL_STATE_IDLE: // 静止状态
                 showPlayView();
                 break;
-            case ViewPager.SCROLL_STATE_DRAGGING:
+            case ViewPager.SCROLL_STATE_DRAGGING:// 滑动中
                 showPauseView();
                 break;
             case ViewPager.SCROLL_STATE_SETTLING:
